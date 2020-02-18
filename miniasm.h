@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include "sdict.h"
 #include "asg.h"
+#include "paf.h"
 
 extern int ma_verbose;
 
@@ -61,6 +62,8 @@ extern "C" {
 void ma_opt_init(ma_opt_t *opt);
 sdict_t *ma_hit_no_cont(const char *fn, int min_span, int min_match, int max_hang, float int_frac);
 ma_hit_t *ma_hit_read(const char *fn, int min_span, int min_match, sdict_t *d, size_t *n, int bi_dir, const sdict_t *excl);
+ma_hit_t *my_ma_hit_read(paf_rec_t **pafs, int numRecords, int min_span, int min_match, sdict_t *d, size_t *n, int bi_dir, const sdict_t *excl);
+
 ma_sub_t *ma_hit_sub(int min_dp, float min_iden, int end_clip, size_t n, const ma_hit_t *a, size_t n_sub);
 size_t ma_hit_cut(const ma_sub_t *reg, int min_span, size_t n, ma_hit_t *a);
 size_t ma_hit_flt(const ma_sub_t *sub, int max_hang, int min_ovlp, size_t n, ma_hit_t *a, float *cov);
@@ -73,6 +76,14 @@ ma_ug_t *ma_ug_gen(asg_t *g);
 int ma_ug_seq(ma_ug_t *g, const sdict_t *d, const ma_sub_t *sub, const char *fn);
 void ma_ug_print(const ma_ug_t *ug, const sdict_t *d, const ma_sub_t *sub, FILE *fp);
 void ma_ug_destroy(ma_ug_t *ug);
+//I added these below ones
+int asg_arc_del_trans(asg_t *g, int fuzz);
+int asg_cut_tip(asg_t *g, int max_ext);
+int asg_cut_internal(asg_t *g, int max_ext);
+int asg_cut_biloop(asg_t *g, int max_ext);
+int asg_pop_bubble(asg_t *g, int max_dist);
+int asg_arc_del_short(asg_t *g, float drop_ratio);
+void asg_destroy(asg_t *g);
 
 #ifdef __cplusplus
 }

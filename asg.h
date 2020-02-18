@@ -29,17 +29,17 @@ typedef struct { size_t n, m; uint64_t *a; } asg64_v;
 #define asg_arc_a(g, v) (&(g)->arc[(g)->idx[(v)]>>32])
 
 asg_t *asg_init(void);
-void asg_destroy(asg_t *g);
+//void asg_destroy(asg_t *g);
 void asg_seq_set(asg_t *g, int sid, int len, int del);
 void asg_symm(asg_t *g);
 void asg_cleanup(asg_t *g);
 
-int asg_arc_del_short(asg_t *g, float drop_ratio);
-int asg_arc_del_trans(asg_t *g, int fuzz);
-int asg_cut_tip(asg_t *g, int max_ext);
-int asg_cut_internal(asg_t *g, int max_ext);
-int asg_cut_biloop(asg_t *g, int max_ext);
-int asg_pop_bubble(asg_t *g, int max_dist);
+//int asg_arc_del_short(asg_t *g, float drop_ratio);
+//int asg_arc_del_trans(asg_t *g, int fuzz);
+//int asg_cut_tip(asg_t *g, int max_ext);
+//int asg_cut_internal(asg_t *g, int max_ext);
+//int asg_cut_biloop(asg_t *g, int max_ext);
+//int asg_pop_bubble(asg_t *g, int max_dist);
 
 // append an arc
 static inline asg_arc_t *asg_arc_pushp(asg_t *g)

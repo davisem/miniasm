@@ -96,7 +96,7 @@ int asg_arc_del_short(asg_t *g, float drop_ratio)
 		asg_cleanup(g);
 		asg_symm(g);
 	}
-	fprintf(stderr, "[M::%s] removed %d short overlaps\n", __func__, n_short);
+	//fprintf(stderr, "[M::%s] removed %d short overlaps\n", __func__, n_short);
 	return n_short;
 }
 
@@ -116,7 +116,7 @@ int asg_arc_del_multi(asg_t *g)
 	}
 	free(cnt);
 	if (n_multi) asg_cleanup(g);
-	fprintf(stderr, "[M::%s] removed %d multi-arcs\n", __func__, n_multi);
+	//fprintf(stderr, "[M::%s] removed %d multi-arcs\n", __func__, n_multi);
 	return n_multi;
 }
 
@@ -133,7 +133,7 @@ int asg_arc_del_asymm(asg_t *g)
 		if (i == nv) g->arc[e].del = 1, ++n_asymm;
 	}
 	if (n_asymm) asg_cleanup(g);
-	fprintf(stderr, "[M::%s] removed %d asymmetric arcs\n", __func__, n_asymm);
+	//fprintf(stderr, "[M::%s] removed %d asymmetric arcs\n", __func__, n_asymm);
 	return n_asymm;
 }
 
@@ -151,7 +151,8 @@ int asg_arc_del_trans(asg_t *g, int fuzz)
 	uint32_t v, n_vtx = g->n_seq * 2, n_reduced = 0;
 
 	mark = (uint8_t*)calloc(n_vtx, 1);
-	for (v = 0; v < n_vtx; ++v) {
+	for (v = 0; v < n_vtx; ++v) 
+   {
 		uint32_t L, i, nv = asg_arc_n(g, v);
 		asg_arc_t *av = asg_arc_a(g, v);
 		if (nv == 0) continue; // no hits
@@ -184,7 +185,7 @@ int asg_arc_del_trans(asg_t *g, int fuzz)
 		}
 	}
 	free(mark);
-	fprintf(stderr, "[M::%s] transitively reduced %d arcs\n", __func__, n_reduced);
+	//fprintf(stderr, "[M::%s] transitively reduced %d arcs\n", __func__, n_reduced);
 	if (n_reduced) {
 		asg_cleanup(g);
 		asg_symm(g);

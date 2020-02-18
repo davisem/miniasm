@@ -34,7 +34,7 @@ asg_t *ma_sg_gen(const ma_opt_t *opt, const sdict_t *d, const ma_sub_t *sub, siz
 		} else if (r == MA_HT_QCONT) g->seq[qn].del = 1;
 	}
 	asg_cleanup(g);
-	fprintf(stderr, "[M::%s] read %d arcs\n", __func__, g->n_arc);
+	//fprintf(stderr, "[M::%s] read %d arcs\n", __func__, g->n_arc);
 	return g;
 }
 
